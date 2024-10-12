@@ -1,6 +1,6 @@
 // ダーツ
 
-// 以下、ローカル変数を使う方法
+// 以下ローカル変数を使う方法
 
 function setup() {
   const green = color(0, 255, 0); // 緑色
@@ -33,12 +33,10 @@ function setup() {
 
 function drawCircle(c, r){ // cという色で、直径はr
   fill(c); // cで塗りつぶす
-  // noStroke();
   ellipse(cx, cy, r, r); // 楕円（中心のx座標、中心のy座標、幅、高さ）
 }
 
 function drawArcs(c1, c2, r) { 
-  // noStroke();
   for (let i = 0; i < 20; i++) { // iは0~19で繰り返し
     let start = TWO_PI / 20 * i; // i/20th of a full circle。TWO_PIは2πのこと
     let stop = TWO_PI / 20 * (i + 1);
@@ -48,7 +46,7 @@ function drawArcs(c1, c2, r) {
 }
 }
 
-// 以下、グローバル変数を使う方法
+// 以下グローバル変数を使う方法
 
 // let cx, cy; // グローバル変数として定義
 
@@ -83,12 +81,10 @@ function drawArcs(c1, c2, r) {
 
 // function drawCircle(c, r){ // cという色で、直径はr
 //   fill(c); // cで塗りつぶす
-//   noStroke(); // 枠線なし
 //   ellipse(cx, cy, r, r); // 楕円（中心のx座標、中心のy座標、幅、高さ）
 // }
 
 // function drawArcs(c1, c2, r) { 
-//   noStroke(); // 枠線なし
 //   for (let i = 0; i < 20; i++) { // iは0~19で繰り返し
 //     let start = TWO_PI / 20 * i; // i/20th of a full circle。TWO_PIは2πのこと
 //     let stop = TWO_PI / 20 * (i + 1);
