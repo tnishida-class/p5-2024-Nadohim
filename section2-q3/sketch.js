@@ -22,9 +22,9 @@ function setup() {
    console.log("Center:", cx, cy);
    console.log("Max Radius:", maxR);
 
-  drawCircle(black, maxR); // 黒くい一番大きな円を書く
+  drawCircle(black, maxR); // 黒い一番大きな円を書く
   drawArcs(green, red, maxR * 0.8); // 一番大きな円の0.8倍の円を書く
-  drawArcs(cream, black, maxR * 0.75); 
+  drawArcs(cream, black, maxR * 0.75); //このあたりの倍数は、見た感じでてきとーにやった
   drawArcs(green, red, maxR * 0.5); 
   drawArcs(cream, black, maxR * 0.45); 
   drawCircle(green, maxR * 0.1);
@@ -40,7 +40,7 @@ function drawArcs(c1, c2, r) {
   for (let i = 0; i < 20; i++) { // iは0~19で繰り返し
     let start = TWO_PI / 20 * i; // i/20th of a full circle。TWO_PIは2πのこと
     let stop = TWO_PI / 20 * (i + 1);
-    fill(i % 2 == 0 ? c1 : c2); // ?はcompact version of an if-else。iを2で割ったあまりがtrueならc1、falseならc2で塗りつぶす。
+    fill(i % 2 == 0 ? c1 : c2); // ?はif-elseの省略系。iを2で割ったあまりがtrueならc1、falseならc2で塗りつぶす。
     arc(cx, cy, r, r, start, stop, PIE);
   }
 }
