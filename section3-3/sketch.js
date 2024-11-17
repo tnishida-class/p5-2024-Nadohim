@@ -2,7 +2,7 @@
 let x, y;
 let vy = 0 //垂直速度
 const gravity = 0.5
-const jumpStrength = -10 // ジャンプの強さ（上にはねるためにマイナスにしてる）
+const jumpSpeed = -10 // ジャンプの強さ（上にはねるためにマイナスにしてる）
 
 
 
@@ -43,7 +43,7 @@ function draw(){
 function keyPressed(){
   if (key === ' '){
     if (y === height - 20){ // 地面に設置しているとき
-      vy = jumpStrength; // vyに上で定義した値を代入
+      vy = jumpSpeed; // vyに上で定義した値を代入
     }
   }
 }
