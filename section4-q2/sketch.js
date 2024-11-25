@@ -37,10 +37,8 @@ function setup(){
   
   // 次のループでstartを更新
   start = stop;
-
-  
-
   }
+
 }
 
 

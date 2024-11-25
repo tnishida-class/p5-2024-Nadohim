@@ -12,13 +12,13 @@ function setup() {
 function draw() {
   background(160, 192, 255);
 
-  if (frameCount % 60 === 0) {
+  if (frameCount % 60 === 0) { // 1秒を60分割してるから、1秒ごと
 
     const b = {
       x: random(width),
       y: random(height),
       size: random(10, 40),
-      vx: random(-2, 2),
+      vx: random(-5, 5), // x方向だけ速い
       vy: random(-2, 2)
     };
     balls.push(b);
@@ -45,7 +45,7 @@ function mouseDragged() { // ドラックされたらボールを増やす
   const dx = mouseX - pmouseX;
   const dy = mouseY - pmouseY;
   if (mag(dx, dy) > 5) { // mag(x, y)はベクトル(x, y)の長さ
-    const b = { x: mouseX, y: mouseY, size: 20, vx: dx, vy: dy };
+    const b = { x: mouseX, y: mouseY, size: random(10,50), vx: dx, vy: dy };
     balls.push(b);
   }
 }
