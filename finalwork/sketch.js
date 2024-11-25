@@ -49,21 +49,25 @@ function setup() {
 function draw() {
   background('#b9d08b');
 
+  // 全てのバルーンのサイズを一斉に変える
+  if (keyIsDown("L".charCodeAt(0))) { currentTextSize += 2; }
+  if (keyIsDown("S".charCodeAt(0))) { currentTextSize -= 2; }
+
+  // 文字サイズの制限
+  currentTextSize = constrain(currentTextSize, minTextSize, maxTextSize);
+
   // 操作可能なバルーンを動かす
   if (keyIsDown(LEFT_ARROW)) { x -= 5; }
   if (keyIsDown(RIGHT_ARROW)) { x += 5; }
   if (keyIsDown(UP_ARROW)) { y -= 5; }
   if (keyIsDown(DOWN_ARROW)) { y += 5; }
-  if (keyIsDown("L".charCodeAt(0))) { currentTextSize += 2; }
-  if (keyIsDown("S".charCodeAt(0))) { currentTextSize -= 2; }
 
-  // 操作可能なバルーンを特定のキーでリセット
+  // 操作可能なバルーンをリセット
   if (keyIsDown(ESCAPE) || keyIsDown(DELETE) || keyIsDown(BACKSPACE)) {
     resetDisplay();
   }
 
-  // 文字サイズと画面の制限
-  currentTextSize = constrain(currentTextSize, minTextSize, maxTextSize);
+  // 操作可能なバルーンの制限
   x = constrain(x, currentTextSize / 4, width - textWidth(displayText) - currentTextSize / 4 * 2);
   y = constrain(y, currentTextSize / 4, height - currentTextSize / 4 - textAscent() - textDescent());
 
@@ -74,19 +78,21 @@ function draw() {
   // 自動で動くバルーンを描く
   for (let i = 0; i < balloons.length; i++) {
     let b = balloons[i];
+    b.textSize = currentTextSize; // 全バルーンのサイズを同期
     updateBalloon(b);
     drawBalloon(b.text, b.x, b.y, '#2c4f54');
   }
-  
+
   // 操作可能なバルーンの言語を表示
-  if (displayLanguage) { // displayLanguageが真の場合（mousePressedで値が代入されている場合） 
+  if (displayLanguage) { 
     fill(3);
     textSize(20);
     text("Language: " + displayLanguage, 10, height - 20);
   }
 }
 
-// 自分で操作する吹き出しをクリックすると、その挨拶の言語を表示
+
+// 操作可能なバルーンをクリックすると、その挨拶の言語を表示
 function mousePressed() {
   let w = textWidth(displayText);
   let h = textAscent() + textDescent();
