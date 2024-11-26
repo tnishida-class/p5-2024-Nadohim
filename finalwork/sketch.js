@@ -48,6 +48,9 @@ function setup() {
 
 function draw() {
   background('#b9d08b');
+  fill(0); 
+  textSize(12);
+  text("自分が矢印キーで動かせせる挨拶を探して、クリックしよう！何語なのかがでてくるよ！（ESC, Delete, Backspaceキーでリセット。SとLキーでテキストサイズを変更）", 20, 20);
 
   // 全てのバルーンのサイズを一斉に変える
   if (keyIsDown("L".charCodeAt(0))) { currentTextSize += 2; }
