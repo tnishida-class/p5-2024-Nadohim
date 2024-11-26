@@ -16,9 +16,21 @@ function setup(){
 
   // ここからが本番
   fill(0);
-  const dx = width / scores.length;
+  const dx = width / scores.length; 
   let px, py; // 線を引くために一つ前の点を覚えておく変数
   for(let i = 0; i < scores.length; i++){
     // BLANK[1]
+    const x = i * dx + 2;
+    const y = height - (height * scores[i] / 100);
+    ellipse(x, y, 8);
+
+    if(i > 0){ // 一回目のループ（i=0）ではここは無視される
+      line(px, py, x, y);
+    }
+    
+    // i=0のときからすべてのループにおいて、現在の点を次のループで「ひとつ前の点」にする
+    px = x;
+    py = y;
+
   }
 }
